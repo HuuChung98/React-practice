@@ -1,0 +1,28 @@
+[
+    {
+        "id": "0001",
+        "name": "Lương Hữu Chung",
+        "gender": "Men",
+        "email": "chung@gmail.com",
+        "address": "123 Lý Thái Tổ",
+        "dateOfBirth": "02/11/1998"
+    },
+
+    {
+        "id": "0002",
+        "name": "Trần Nhật Nam",
+        "gender": "Men",
+        "email": "nam@gmail.com",
+        "address": "123 Kinh Dương Vương",
+        "dateOfBirth": "02/12/1998"
+    },
+
+    {
+        "id": "0003",
+        "name": "Vũ Chi Lan",
+        "gender": "Woman",
+        "email": "lan@gmail.com",
+        "address": "364 Cộng Hòa",
+        "dateOfBirth": "02/5/1998"
+    }
+]
