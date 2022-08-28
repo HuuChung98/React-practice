@@ -12,7 +12,8 @@ export default function ToDoApp() {
                     <h1 className='mx-auto text-center'>Todo App</h1>
                     <AddTodo />
                     <SearchTodo />
-                    <TodoList />  // Goi API lay danh sach ve de hien thi tren Giao dien
+                    {/*  Goi API lay danh sach ve de hien thi tren Giao dien */}
+                    <TodoList />  
                     <FilterTodo />
                 </div>
             </div>

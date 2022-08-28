@@ -1,15 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from 'react-redux';  // cung cấp nhưng state của redux cho những component ở redux 
 import rootReducer from './Redux/reducers';
+import thunk from 'redux-thunk';
 
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const middleware = applyMiddleware(thunk);
+
+const store = createStore(rootReducer, 
+  middleware,
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
 console.log("state default", store.getState());
 
 // Để thay đổi state, ta cần dispatch 1 action 
