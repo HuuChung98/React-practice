@@ -2,11 +2,10 @@ import React from 'react';
 import cln from "classnames";
 import styles from "./styles.module.scss";
 import { useDispatch } from 'react-redux';
-import axios from 'axios';
 
-import { deleteTodo } from "../Redux/actions/todo"
+import { completeTodo, deleteTodo } from "../Redux/actions/todo"
 
-export default function TodoItems({ todo, onDeleteSuccess }) {
+export default function TodoItems({ todo }) {
 
     // const handleDeleteTodo = async () => {
     //     // Call API de delete todo
@@ -24,6 +23,10 @@ export default function TodoItems({ todo, onDeleteSuccess }) {
         dispatch(deleteTodo(todo.id));
     };
 
+    const handleCompleteTodo = () => {
+        dispatch(completeTodo(todo));
+    };
+
     return (
         <li className='d-flex justify-content-between align-items-center mb-4 '>
             <div className={cln("d-flex flex-column mr-5", { [styles.todoCompleted]: todo.isCompleted })}>
@@ -36,7 +39,7 @@ export default function TodoItems({ todo, onDeleteSuccess }) {
                     className={cln("btn btn-success", {
                         [styles.btnCompleted]: todo.isCompleted,
                     })}
-                >Complete</button>
+                   onClick={handleCompleteTodo} >Complete</button>
                 <button className='btn btn-danger'
                     onClick={handleDeleteTodo} >Delete</button>
             </div>

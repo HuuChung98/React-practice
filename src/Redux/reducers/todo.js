@@ -12,6 +12,10 @@ const todoReducer = (state = initialState, action) => {
         case "GET_TODOS": {
             return {...state, todos: action.data};
         }
+
+        case "CHANGE_SEARCH": {
+            return { ...state, search: action.data}
+        }
     
         default:
             return state;

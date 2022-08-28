@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from 'react-redux';  // cung cấp nhưng state của redux cho những component ở redux 
 import rootReducer from './Redux/reducers';
 import thunk from 'redux-thunk';
@@ -10,10 +10,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
-const middleware = applyMiddleware(thunk);
+// const middleware = applyMiddleware(thunk);
+// Gop redux devtool voi middleware lai thanh 1 tham so duy nhat de truyen vao store
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const enhancer = composeEnhancers(
+  applyMiddleware(thunk)
+  // other store enhancers if any
+);
 const store = createStore(rootReducer, 
-  middleware,
+  enhancer,
   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 console.log("state default", store.getState());

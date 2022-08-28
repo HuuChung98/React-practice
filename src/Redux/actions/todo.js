@@ -6,11 +6,18 @@ import axios from 'axios';
 // redux thunk la mot redux middle cho phep viet cac action tra ve 1 function thay vi la mot object bang cach tri hoan viec dua action ve reducer
 
 export const getTodos = () => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         try {
+            // getState la ham lay state truc tiep tu store 
+            const { search } = getState().todo;
             // dua API vao day
             // Call API
-            const { data } = await axios.get("https://62528e0f69af39728b501bf1.mockapi.io/chung/products");
+            const { data } = await axios.get("https://62528e0f69af39728b501bf1.mockapi.io/chung/products",
+            {
+                params: {
+                    title: search,
+                },
+            });
             // Thanh cong ==> dispatch action ve action gui du lieu vao store 
             // return {
             //     type: "GET_TODOS",
@@ -34,5 +41,25 @@ export const deleteTodo = (todoId) => {
         } catch (error) {
             console.log(error);
         }
+    };
+};
+
+export const completeTodo = (todo) => {
+    return async (dispatch) => {
+        const {id, ...data} = todo;
+        try {
+            await axios.put(`https://62528e0f69af39728b501bf1.mockapi.io/chung/products/${todo.id}`, { ...data, isCompleted: true});
+            dispatch(getTodos());
+            
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+};
+export const changeSearch = (value) => {
+    return {
+        type: "CHANGE_SEARCH",
+        data: value,
     };
 };
