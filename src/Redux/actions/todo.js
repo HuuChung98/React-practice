@@ -1,4 +1,6 @@
 import axios from 'axios';
+
+import { GET_TODOS } from "../constants/todo"
 // import { useDispatch } from 'react-redux';
 
 // Can phai su dung 1 redux middleware la redux thunk de co the call API trong action sau do dispatch 1 action moi de gui data toi store
@@ -24,7 +26,7 @@ export const getTodos = () => {
             //     data,
             // }
             // ==> Thanh cong
-            dispatch({ type: "GET_TODOS", data});
+            dispatch({ type: GET_TODOS, data});
         } catch (error) {
             console.log(error);
         }
