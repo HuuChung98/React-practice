@@ -8,7 +8,7 @@ import TodoItems from './TodoItems';
 export default function TodoList() {
 
     
-    const { todos, search } = useSelector((state) => state.todo);
+    const { todos, search, isLoading, error } = useSelector((state) => state.todo);
     const dispatch = useDispatch();
 
     // const fetchTodos = async () => {
@@ -27,6 +27,15 @@ export default function TodoList() {
         // fetchTodos();
         dispatch(getTodos());
     }, [search]);
+    if(isLoading) {
+      // tra ve 1 component Loading
+      // <Loading /> 
+      return <h1>Loading...</h1>
+    };
+    if(error) {
+      // <Error error={error} />
+      return <div className='alert alert-danger'>{error}</div>
+    }
   return (
     <ul>
         {todos.map((todo) => {
