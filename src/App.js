@@ -44,6 +44,6 @@ function App() {
     // <Composition />
     // <ProductDetail />
   );
-}
+};
 
 export default App;

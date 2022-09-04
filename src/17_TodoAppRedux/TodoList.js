@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getTodos } from "../Redux/actions/todo";
+// import { getTodos } from "../Redux/actions/todo";
+import { getTodos } from '../Redux/slices/todo';
 
 import TodoItems from './TodoItems';
 

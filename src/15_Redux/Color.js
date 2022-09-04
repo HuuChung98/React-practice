@@ -1,27 +1,29 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
+
+import { addColor, removeColor } from "../Redux/slices/colors";
 
 const Color = () => {
     // useSelector nhận vào 1 callback có params lá state tổng của store, nếu muốn truy cập vào 1 reducer con ta return về state chấm tới tên của reducer khai báo trong rootReducer 
     const { colors } = useSelector((state) => state.color);
     const dispatch = useDispatch();
-    const addColor = () => {
-        const color = prompt("Input your color: ");
-        // type: bắt buộc phải có trong dispatch
-        // data: bổ nghĩa cho type
-        dispatch({ type: "ADD_COLOR", data: color});
+
+    const handleAddColor = () => {
+        const color = prompt("Input your color");
+        dispatch(addColor(color));
     };
-    const removeColor = () => {
-        const color = prompt("Input your color: ");
-        dispatch({ type: "REMOVE_COLOR", data: color});
+    
+    const handleRemoveColor = () => {
+        const color = prompt("Remove your color");
+        dispatch(removeColor(color));
     };
 
 
     return (
         <div>
             <p>Colors: {colors.join(", ")}</p>
-            <button onClick={addColor}>Add color</button>
-            <button onClick={removeColor}>Remove color</button>
+            <button onClick={handleAddColor}>Add color</button>
+            <button onClick={handleRemoveColor}>Remove color</button>
 
         </div>
     )

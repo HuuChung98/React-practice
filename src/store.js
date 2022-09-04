@@ -21,13 +21,23 @@
 // Import voi Redux Toolkit
 
 import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./Redux/reducers";
+// import todo from "./Redux/reducers/todo";
+// import colors from "./Redux/reducers/colors";
+import cart from "./Redux/reducers/cart";
+
+import count from "./Redux/slices/count";
+import colors from "./Redux/slices/colors";
+import todo from "./Redux/slices/todo";
 
 // configurationStore ==> mac dinh la da cai DevTools va Redux-thunk
 const store = configureStore({
-    reducer: rootReducer,
-    // devTools: true, // setup Redux Devtool, neu ko viet key nay ra ==> mac dinh la true 
-    // middleware: dung de them cac redux middlewares(mac dinh da co san thunk)
+    reducer: {
+        todo,
+        colors,
+        cart,
+        count
+    },
+
 });
 
 export default store;
